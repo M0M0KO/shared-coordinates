@@ -1,0 +1,13 @@
+schema_version: 1
+analysis_profile: original
+status: frozen_after_context_limit_preflight_before_psych201_analysis
+tokenizer: Llama-3.1-8B
+maximum_model_tokens: 131072
+policy: exclude_only_source_hash_pinned_sessions_exceeding_the_model_context_limit
+exclusions:
+  - source_shard: 3
+    source_session_row: 10154
+    text_sha256: dae32135999e199ebcbf83a14aa647b0d902df6fb6836f7e080e6dd0f39b8c21
+    observed_tokens: 131766
+    response_count: 5264
+    reason: source_session_exceeds_frozen_model_context_limit

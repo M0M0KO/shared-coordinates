@@ -1,0 +1,21 @@
+schema_version: 1
+analysis_profile: original
+status: frozen_before_psych201_model_output
+task_specific_basis:
+  method: reference_preprocessed_state_pca
+  dimension: selected_shared_dimension
+  maximum_responses_per_experiment: 10000
+  sampling_seed: 20260821
+  minimum_responses: 100
+intrinsic_dimension:
+  method: participation_ratio
+  covariance_space: reference_preprocessed_512d
+likelihood:
+  method: completion_only_full_response_span_nll
+  aggregation_unit: response_span
+alignment:
+  reference: frozen_minitaur_shared_basis
+  normalization: mean_squared_canonical_overlap
+prediction:
+  grouping: leave_one_study_out
+  outcomes: [cross_validated_r2, spearman, calibration_slope]

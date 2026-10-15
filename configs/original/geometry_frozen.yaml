@@ -1,0 +1,49 @@
+schema_version: 1
+analysis_profile: original
+freeze_date: 2026-08-22
+
+representation_sensitivities:
+  primary_pca_dimension: 512
+  pca_dimensions: [256, 1024]
+  remove_first_global_pcs: [1, 3, 5]
+  unit_length_normalization: true
+  sensitivity_scope: minitaur_8b_layer_24
+  selection_rule: same_nested_grid_and_one_standard_error_rule_as_primary
+  pc_removal_implementation: zero_selected_coordinates_after_frozen_global_PCA_projection
+  unit_normalization_implementation: normalize_centered_raw_state_before_refitting_PCA
+
+intrinsic_dimension:
+  models: [llama_base_8b, minitaur_8b]
+  layer: 24
+  pca_dimension: 512
+  task_balanced_total_local_sample: 20000
+  local_sample_per_task: 1250
+  distance: euclidean
+  estimators: [participation_ratio, two_nn, levina_bickel]
+  levina_bickel_neighbors: [10, 20, 30]
+  sampling_seed: 20260821
+
+task_subspace_geometry:
+  compare_within_validation_fold: true
+  dimensions: frozen_shared_dimension
+  metrics: [principal_angles_radians, mean_squared_cosine_alignment]
+
+retained_information:
+  null_model: fold_specific_unsmoothed_training_response_intercept
+  full_model: q512_full_representation
+  formula: (NLL_null - NLL_shared_d) / (NLL_null - NLL_full_512)
+
+trajectories:
+  tasks:
+    - adaptive_n_back
+    - dot_pattern_expectancy
+    - probabilistic_selection
+    - two_stage_decision
+    - information_sampling_task
+    - columbia_card_task_hot
+    - tower_of_london
+    - shift_task
+    - threebytwo
+  minimum_states: 3
+  epsilon: 1.0e-8
+  metrics: [mean_step_length, tortuosity, mean_discrete_curvature]

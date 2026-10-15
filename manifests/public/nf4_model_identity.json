@@ -1,0 +1,20 @@
+{
+  "base_model": {
+    "source_provider": "ModelScope",
+    "source_model_id": "LLM-Research/Meta-Llama-3.1-70B",
+    "requested_revision": "master",
+    "immutable_upstream_revision_recorded": false,
+    "verified_file_count": 40,
+    "verified_weight_shards": 30,
+    "verified_total_bytes": 141116748209,
+    "source_inventory_sha256": "f53c715ad87c801561dc9faef0ac8f7d4eed3df18f594e88b2dcbd105dc3a89d"
+  },
+  "centaur_adapter": {
+    "model_id": "marcelbinz/Llama-3.1-Centaur-70B-adapter",
+    "revision": "159600db8be99dc183c289923148dfd96cbd8e07",
+    "license": "llama3.1",
+    "adapter_model_file": "adapter_model.safetensors",
+    "adapter_model_bytes": 414337624,
+    "adapter_model_sha256": "e2c82498b271d79605700fe51261c9f83a216032b66efc2cf239a51a41cb0475"
+  }
+}

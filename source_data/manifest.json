@@ -1,0 +1,18 @@
+{
+  "description": "Copied group-level analysis outputs; SHA-256 values match the source files on kemove.",
+  "files": {
+    "analysis_tables/70b_base_shared_controls.parquet": "cb7afdbaa1de0235492539e39a21a709b4b64068e801c12fc546d8a42d080e7b",
+    "analysis_tables/70b_base_shared_manifold.parquet": "63b14fef4b9f9f4c0715867110d70261d4f1b1ae6bf7cf743c07d3e4f140a4bf",
+    "analysis_tables/70b_base_primary_statistics.json": "d5dff8b5231950f2d733ae421b0c11bc9dedc54741b173877118d36f1a08a694",
+    "analysis_tables/70b_centaur_shared_controls.parquet": "483f3480b2e665ba4364bce45dd37e67d2bc26567f5458e25c3dfd9f6d0e0939",
+    "analysis_tables/70b_centaur_shared_manifold.parquet": "d2c9585c8edf1319b4b17a1640be80cb52176560dd2877c2db61d7b8b5858d77",
+    "analysis_tables/70b_centaur_primary_statistics.json": "c25eeaef852c0b26e008776d0f562f664662fcf66d6624de8443f1702194f284",
+    "analysis_tables/8b_causal_statistics.json": "8ae6370e84ab365b87b4cf2b2fe113285162b466fe4fb3c6b1d6d13c0388d9b4",
+    "analysis_tables/8b_jlens_access.parquet": "9073d9223debe9acf3c4ce462a6a7458f20f8945dc9e4cf1c37910a092ed6369",
+    "analysis_tables/8b_jlens_statistics.json": "4f6993473d3f0868f571c9ec953238a92943c40a2868c3e589b49ada27b58c74",
+    "analysis_tables/8b_primary_statistics.json": "416cb860949392915555b90b1da4cf5be5da13784ca54667b5cfa643eab814c6",
+    "analysis_tables/8b_retained_information.parquet": "e8eb6e2fae5bd9c2f18c7a61008921fa6d4a4817aac3960cfd69cbc1aee034a8",
+    "analysis_tables/8b_shared_controls.parquet": "4600ca83e896028c987f4648402ee6d5749dcaf370ab4fc355386918f8bf46b8",
+    "analysis_tables/8b_shared_manifold.parquet": "17b06921fbebea1b5962db9b569ade725e34c1526be1e374b9c822880d4bf6d3"
+  }
+}

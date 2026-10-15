@@ -1,0 +1,18 @@
+schema_version: 1
+analysis_profile: original
+status: frozen_before_intervention_output
+model: minitaur_8b
+source_layer: selected_primary_layer
+ablation:
+  recipients_per_task: 64
+  selection: response_balanced_stable_hash
+  strengths: [0.25, 0.50, 1.00]
+  haar_random_subspaces: 100
+swap:
+  pairs_per_sufficiently_large_task: 1000
+  donor_response_must_differ: true
+  random_subspace_null_per_pair: true
+execution:
+  downstream_only_exact_rerun: true
+  downstream_chunk_size: 4096
+  seed: 20260821

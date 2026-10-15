@@ -1,0 +1,25 @@
+schema_version: 1
+analysis_profile: original
+freeze_date: 2026-08-22
+
+base_model: models/Llama-3.1-70B
+centaur_adapter: models/Llama-3.1-Centaur-70B-adapter
+precision: bfloat16_exact
+device_map: auto
+maximum_memory:
+  gpu_0: 74GiB
+  cpu: 850GiB
+offload_to_disk: false
+benchmark:
+  one_primary_trial_per_sro_task: true
+  tasks: 16
+  repeats: 1
+  layers: [20, 40, 60, 80]
+  primary_layer: 60
+resource_gate:
+  maximum_projected_wall_days_on_current_host: 30
+  extrapolation_trials:
+    development: 1732627
+    confirmation_T1_and_T2: 1397280
+  exact_bfloat16_required_for_original: true
+  quantized_results_cannot_replace_original: true

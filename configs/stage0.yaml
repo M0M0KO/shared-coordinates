@@ -1,0 +1,87 @@
+schema_version: 1
+project:
+  name: cognitive-manifold
+  seed: 20260821
+  stage: stage0
+
+paths:
+  data_raw: data/raw
+  data_interim: data/interim
+  data_derived: data/derived
+  models: models
+  cache: cache
+  results: results
+  logs: logs
+  public_manifests: manifests/public
+  private_manifests: manifests/private
+
+cache:
+  modelscope: cache/modelscope
+  huggingface: cache/huggingface
+
+development_split:
+  method: stable_participant_hash
+  folds: 5
+  retest_policy: ids_for_exclusion_only_until_m7
+
+stage0:
+  task_count: 3
+  task_selection_uses_model_results: false
+  task_families:
+    - attention_interference
+    - inhibitory_control
+    - learning_decision
+  primary_layer_8b: 24
+  sensitivity_layers_8b: [16]
+  shared_dims: [8, 16, 32, 64]
+  private_ranks: [1, 2, 4, 8]
+  random_subspaces: 100
+  primary_history_mode: strict_cold_start
+  strict_target_history: response_masked
+  secondary_history_modes: [early_trial, warm_start]
+
+statistics:
+  participant_cluster_bootstrap: 1000
+  task_weighting: equal
+
+benchmark:
+  jlens_model_count: 1
+  jlens_prompts: 100
+  max_sequence_length: 128
+
+downloads:
+  max_workers: 8
+  hash_algorithm: sha256
+  public_data_only: true
+  sro:
+    provider: github
+    repository: https://github.com/IanEisenberg/Self_Regulation_Ontology.git
+    revision: 4e6e837fb5aaca87ed5914fd9be251156f43eec9
+    license: CC-BY-4.0
+    local_dir: data/raw/Self_Regulation_Ontology
+  llama_base_8b:
+    provider: modelscope
+    mirror_id: LLM-Research/Meta-Llama-3.1-8B
+    mirror_revision: 39ef6178f1f193f3636d4f6150d6966dc05fa366
+    official_id: meta-llama/Llama-3.1-8B
+    official_revision: d04e592bb4f6aa9cfee91e2e20afa771667e1d4b
+    license: llama3.1
+    local_dir: models/Llama-3.1-8B
+    allow_patterns:
+      - "*.json"
+      - "*.safetensors"
+      - LICENSE
+      - USE_POLICY.md
+      - README.md
+  minitaur_8b:
+    provider: huggingface_mirror
+    provider_reason: no_verified_modelscope_repository_as_of_2026-08-22
+    official_id: marcelbinz/Llama-3.1-Minitaur-8B
+    official_revision: 7e784a8933931f4e8a6954aa0d8dae5f5b0b764d
+    endpoint: https://hf-mirror.com
+    license: llama3.1
+    local_dir: models/Llama-3.1-Minitaur-8B
+    allow_patterns:
+      - "*.json"
+      - "*.safetensors"
+      - README.md

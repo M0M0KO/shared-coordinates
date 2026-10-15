@@ -1,0 +1,327 @@
+schema_version: 1
+analysis_profile: original
+scientific_source:
+  title: A Shared Computational Manifold Organizes Stable Individual Differences Across Human Cognition
+  transcription_date: 2026-08-22
+  rule: reproduce_source_before_strict_revision
+
+execution:
+  seed: 20260821
+  runnable: true
+  blocked_by_decisions: []
+  decision_freeze_date: 2026-08-22
+  ordered_steps:
+    - 00_download_data
+    - 01_audit_tasks
+    - 02_build_sro_sessions
+    - run_parser_unit_tests
+    - freeze_task_audit
+    - 03_extract_8b_states
+    - 04_fit_shared_manifold
+    - freeze_shared_layer_and_dimension
+    - 05_fit_individuality_on_development_participants_only
+    - freeze_private_rank_and_regularization
+    - 06_confirm_retest_on_untouched_participants
+    - 07_run_psych201
+    - 08_train_shuffled_control
+    - 09_fit_jlens
+    - 10_run_interventions
+    - 11_run_centaur70b
+    - 12_make_results
+
+paths:
+  results: results/original
+  reports: reports/original
+  private_manifests: manifests/private/original
+  source_data: data/raw
+  derived_data: data/derived/original
+  feature_cache: cache/original
+
+data:
+  public_only: true
+  psych101:
+    dataset_id: marcelbinz/Psych-101
+    revision: 611565c66395e2787cd7e3305149bb75dc138024
+    max_sessions_per_experiment: 1000
+    sampling_seed: 20260821
+    pooled_geometry_weighting: equal_experiment
+    response_markers: ["<<", ">>"]
+  psych201_discrete:
+    dataset_id: marcelbinz/Psych-201-discrete
+    revision: 060062064d00766ea0b5666c73268329d0f556b6
+    split: train
+    include_filter:
+      is_psych101: false
+      is_psych101_test: false
+  sro:
+    repository: https://github.com/IanEisenberg/Self_Regulation_Ontology.git
+    revision: 4e6e837fb5aaca87ed5914fd9be251156f43eec9
+    complete_path: Data/Complete_02-16-2019/Individual_Measures
+    retest_path: Data/Retest_02-16-2019/Individual_Measures
+    expected_total_participants: 522
+    expected_confirmation_participants: 150
+    expected_development_participants: 372
+    confirmation_identification: intersection_of_complete_and_retest_participant_ids
+    development_split: stable_hash_of_participant_id
+    development_folds: 5
+    confirmation_policy: untouched_until_all_design_choices_are_frozen
+  ds004636:
+    snapshot: 1.0.4
+    commit: 769186fe62efeed3837a44347cbbf9ca2a9d168a
+    doi: 10.18112/openneuro.ds004636.v1.0.4
+    role: optional_neural_validation
+    payload_download_gate: behavioral_hypotheses_confirmed
+
+task_audit:
+  minimum_quality: 1
+  quality_scale:
+    2: all_choice_relevant_information_losslessly_encodable_as_text
+    1: all_choice_relevant_information_losslessly_reconstructable_from_recorded_features
+    0: behaviorally_relevant_information_not_confidently_reconstructable
+  output: configs/original/task_audit.csv
+  required_columns:
+    - task
+    - source_file
+    - required_columns
+    - response_column
+    - stimulus_columns
+    - feedback_columns
+    - trial_order_columns
+    - lossless_encoding
+    - exclusion_reason
+    - task_family
+  task_families:
+    memory_context: [adaptive_n_back, dot_pattern_expectancy]
+    attention_interference: [attention_network_task, simon, stroop]
+    inhibitory_control: [go_nogo, stop_signal, stim_selective_stop_signal]
+    learning_decision: [probabilistic_selection, two_stage_decision, information_sampling_task]
+    valuation_planning: [discount_titrate, columbia_card_task_hot, tower_of_london]
+    flexibility: [shift_task, threebytwo]
+  rebalance_excluded_tasks_without_model_performance: true
+  source_experiment_repository:
+    url: https://github.com/expfactory/expfactory-experiments.git
+    study_window_start: 2016-07-21
+    study_window_end: 2016-09-22
+    local_dir: data/raw/expfactory-experiments
+    rule: recorded_trial_fields_are_authoritative_and_source_code_supplies_task_instructions
+  analysis_stages:
+    adaptive_n_back: [adaptive, control]
+    attention_network_task: [test]
+    columbia_card_task_hot: [test]
+    discount_titrate: [test]
+    dot_pattern_expectancy: [test]
+    go_nogo: [test]
+    information_sampling_task: [Fixed_Win, Decreasing_Win]
+    probabilistic_selection: [training, test]
+    shift_task: [test]
+    simon: [test]
+    stim_selective_stop_signal: [test]
+    stop_signal: [test]
+    stroop: [test]
+    threebytwo: [test]
+    tower_of_london: [test]
+    two_stage_decision: [test]
+  practice_policy: retain_as_history_but_not_as_primary_outcome
+
+sro_prompt:
+  prefix_order: [task_instructions, all_previous_available_task_events, current_stimulus_and_state, response_open_marker]
+  historical_event_order: [stimulus_and_state, observed_response, available_feedback_or_outcome]
+  include_all_previous_events_available_to_participant: true
+  current_response_in_prefix: false
+  response_label_remap:
+    scope: participant_task
+    method: deterministic_hash
+    fixed_within_session: true
+  parser_api: [build_session, build_prefix, candidate_responses, observed_response]
+  output_schema:
+    - dataset
+    - participant
+    - timepoint
+    - task
+    - task_family
+    - trial
+    - block
+    - condition
+    - prompt_prefix
+    - response
+    - candidate_responses
+    - reaction_time
+    - validity
+  acceptance:
+    exact_response_count_reconstruction: true
+    no_current_response_leakage: true
+    preserve_chronological_order: true
+    valid_candidate_labels: true
+    reproduce_source_summary_statistics: true
+    manual_complete_sessions_per_task: 50
+
+models:
+  discovery:
+    - llama_base_8b
+    - minitaur_8b
+    - reproduced_intact_psych101_8b
+    - response_shuffled_psych101_8b
+  confirmation:
+    - llama_base_70b
+    - centaur_70b
+  freeze_during_state_extraction: true
+  shuffled_control:
+    same_prompts_as_intact: true
+    same_optimization_as_intact: true
+    donor_response_match_priority:
+      - experiment
+      - trial_index_or_block
+      - experimental_condition
+      - available_response_set
+  independent_finetune:
+    source: pinned_centaur_training_code
+    load_in_4bit: true
+    lora_rank: 8
+    lora_alpha: 8
+    lora_dropout: 0.0
+    use_rslora: true
+    target_modules: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+    max_sequence_length: 32768
+    completion_only_response_markers: ["<<", ">>"]
+    epochs: 5
+    learning_rate: 5.0e-5
+    embedding_learning_rate_ratio: 0.1
+    optimizer: adamw_8bit
+    scheduler: cosine
+    weight_decay: 0.01
+    warmup_steps: 100
+    batch_size_per_device: 1
+    gradient_accumulation_steps: 32
+    save_steps: 100
+    seed: 100
+    checkpoint_selection: final_completed_optimizer_step_after_epoch_5
+    evaluation_during_training: false
+
+likelihood_and_representation:
+  trial_metric: negative_log_likelihood
+  state: post_block_residual_stream
+  state_token: final_prefix_token_immediately_before_response
+  trajectories_over: trial_order_at_fixed_layer
+  layers_8b: [8, 16, 24, 32]
+  primary_layer_8b: 24
+  layers_70b: [20, 40, 60, 80]
+  primary_layer_70b: 60
+  preprocessing_fit_cohort: development_only
+  centering: task_balanced_global_mean_per_layer
+  pca:
+    method: task_balanced_randomized
+    primary_dim: 512
+    sensitivity_dims: [256, 1024]
+    max_states_per_task_for_basis_fit: 10000
+    covariance_spectrum_whiten: false
+  anisotropy_sensitivity:
+    remove_global_pc_counts: [0, 1, 3, 5]
+    unit_length_normalization: true
+  extraction:
+    dtype: bfloat16
+    state_storage_dtype: float16
+    batch_size: 1
+    checkpoint_unit: model_task
+    truncate_sro_prefix: false
+
+shared_manifold:
+  supervised: true
+  orthonormal_basis: true
+  shared_across_tasks: true
+  task_specific_readouts: true
+  loss: equal_task_weighted_negative_log_likelihood
+  dimensions: [8, 16, 32, 64, 128, 256]
+  selection: smallest_dimension_within_one_standard_error_of_best_validation_nll
+  participant_stratified_folds: 5
+  controls:
+    full_representation_dim: 512
+    task_specific_subspaces: true
+    haar_random_subspaces: 100
+    base_llama_shared_subspace: true
+    response_shuffled_shared_subspace: true
+  held_out_family_transfer: true
+  optimization:
+    optimizer: adamw
+    learning_rates: [0.0003, 0.001, 0.003]
+    weight_decays: [0.0, 0.00001, 0.0001, 0.001]
+    max_epochs: 200
+    early_stopping_patience: 20
+    minimum_validation_improvement: 0.0001
+    task_balanced_trials_per_task_per_step: 256
+    steps_per_epoch: 10
+
+individuality:
+  private_ranks: [1, 2, 4, 8, 16, 32]
+  tune_only_in_development_cohort: true
+  nested_cross_validation: true
+  selection_goal: smallest_rank_reaching_predictive_plateau
+  confirmation_minimum_families_for_inference: 2
+  confirmation_minimum_distinct_families_for_evaluation: 1
+  primary_cross_time_test: t1_family_a_to_disjoint_t2_family_b
+  supplement: every_feasible_leave_one_family_out_t1_to_t2_transfer
+  optimization:
+    optimizer: adamw
+    learning_rates: [0.0003, 0.001, 0.003]
+    l2_regularization: [0.0001, 0.001, 0.01, 0.1, 1.0]
+    max_epochs: 300
+    early_stopping_patience: 30
+    minimum_validation_improvement: 0.0001
+  predictive_plateau: smallest_rank_within_one_standard_error_of_best_validation_nll
+  preregistered_family_split:
+    A: [memory_context, inhibitory_control, learning_decision]
+    B: [attention_interference, valuation_planning, flexibility]
+
+psych201:
+  process_all_non_psych101_experiments: true
+  same_likelihood_and_state_pipeline: true
+
+jlens:
+  models: [llama_base_8b, minitaur_8b, response_shuffled_psych101_8b]
+  psych101_prompts: 1000
+  task_balanced: true
+  max_sequence_length: 128
+  source_layers: [8, 16, 24]
+  target_layer: final_residual
+  dim_batch: 8
+  checkpoint_and_resume: true
+  random_subspaces_for_null: 1000
+
+intervention:
+  strengths: [0.25, 0.50, 1.00]
+  random_subspaces: 100
+  coordinate_swap_pairs_per_sufficiently_large_task: 1000
+  sufficiently_large_task:
+    minimum_valid_recipient_trials: 1000
+    minimum_response_classes: 2
+    minimum_trials_per_response_class: 100
+
+statistics:
+  alpha: 0.05
+  primary_tests: 3
+  multiple_comparison_correction: holm
+  participant_task_cell_aggregation: true
+  mixed_effects_random_intercepts: [participant, task]
+  cluster_bootstrap_axes: [participant, task]
+  bootstrap_replicates: 10000
+  permutation_replicates: 10000
+  deterministic_missing_value_imputation_primary: false
+  decision_thresholds:
+    small_transfer_penalty_max_fraction_of_full_over_random_advantage: 0.20
+    substantially_worse_min_fraction_of_full_over_random_advantage: 0.20
+
+participant_split:
+  canonical_id_encoding: unicode_nfc_utf8_after_strip
+  hash_algorithm: sha256
+  hash_namespace: cognitive-manifold|original|v1
+  fold_assignment: first_8_digest_bytes_big_endian_mod_5
+
+centaur70b:
+  run_only_after_8b_analysis_frozen: true
+  replicate:
+    - shared_subspace_dimension_curve
+    - held_out_task_transfer
+    - private_readout_rank_curve
+    - cross_domain_transfer
+    - cross_time_transfer
+    - prespecified_psych201_subset
+  fit_jlens: false

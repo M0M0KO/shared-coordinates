@@ -1,0 +1,108 @@
+{
+  "nulls_sha256": "288368015028fd7e09be8203900c4bc034dca08bb2b79f64791fda4b00ec227e",
+  "permutation_replicates": 10000,
+  "profile": "original",
+  "random_subspaces_per_model_layer": 1000,
+  "schema_version": 1,
+  "tests": {
+    "llama_base_8b_layer_16_behavioral_vs_haar": {
+      "empirical_one_sided_p": 0.000999000999000999,
+      "estimate": 0.09880248177051543,
+      "haar_mean": 0.999940599322319,
+      "observed_causal_access": 1.0987430810928345,
+      "unique_haar_subspaces": 1000
+    },
+    "llama_base_8b_layer_24_behavioral_vs_haar": {
+      "empirical_one_sided_p": 0.25574425574425574,
+      "estimate": 0.0018214074969291616,
+      "haar_mean": 0.9999564798474312,
+      "observed_causal_access": 1.0017778873443604,
+      "unique_haar_subspaces": 1000
+    },
+    "llama_base_8b_layer_8_behavioral_vs_haar": {
+      "empirical_one_sided_p": 0.000999000999000999,
+      "estimate": 0.32198254007101057,
+      "haar_mean": 0.9991833792328835,
+      "observed_causal_access": 1.321165919303894,
+      "unique_haar_subspaces": 1000
+    },
+    "minitaur_8b_layer_16_behavioral_vs_haar": {
+      "empirical_one_sided_p": 0.000999000999000999,
+      "estimate": 0.09629479157924647,
+      "haar_mean": 0.9999477554559708,
+      "observed_causal_access": 1.0962425470352173,
+      "unique_haar_subspaces": 1000
+    },
+    "minitaur_8b_layer_24_behavioral_vs_haar": {
+      "empirical_one_sided_p": 0.001998001998001998,
+      "estimate": 0.007969409584999032,
+      "haar_mean": 0.9999497827291489,
+      "observed_causal_access": 1.007919192314148,
+      "unique_haar_subspaces": 1000
+    },
+    "minitaur_8b_layer_8_behavioral_vs_haar": {
+      "empirical_one_sided_p": 0.000999000999000999,
+      "estimate": 0.1887369394898415,
+      "haar_mean": 0.9990428447127342,
+      "observed_causal_access": 1.1877797842025757,
+      "unique_haar_subspaces": 1000
+    },
+    "minitaur_minus_llama_base_8b_layer_16": {
+      "estimate": -0.0025005340576171875,
+      "one_sided_random_subspace_permutation_p": 0.8103189681031897,
+      "permutations": 10000,
+      "unique_matched_haar_differences": 1000
+    },
+    "minitaur_minus_llama_base_8b_layer_24": {
+      "estimate": 0.006141304969787598,
+      "one_sided_random_subspace_permutation_p": 9.999000099990002e-05,
+      "permutations": 10000,
+      "unique_matched_haar_differences": 1000
+    },
+    "minitaur_minus_llama_base_8b_layer_8": {
+      "estimate": -0.13338613510131836,
+      "one_sided_random_subspace_permutation_p": 1.0,
+      "permutations": 10000,
+      "unique_matched_haar_differences": 1000
+    },
+    "minitaur_minus_response_shuffled_psych101_8b_layer_16": {
+      "estimate": 0.008785367012023926,
+      "one_sided_random_subspace_permutation_p": 0.054894510548945105,
+      "permutations": 10000,
+      "unique_matched_haar_differences": 1000
+    },
+    "minitaur_minus_response_shuffled_psych101_8b_layer_24": {
+      "estimate": 0.04363042116165161,
+      "one_sided_random_subspace_permutation_p": 9.999000099990002e-05,
+      "permutations": 10000,
+      "unique_matched_haar_differences": 1000
+    },
+    "minitaur_minus_response_shuffled_psych101_8b_layer_8": {
+      "estimate": -0.0620119571685791,
+      "one_sided_random_subspace_permutation_p": 0.9984001599840016,
+      "permutations": 10000,
+      "unique_matched_haar_differences": 1000
+    },
+    "response_shuffled_psych101_8b_layer_16_behavioral_vs_haar": {
+      "empirical_one_sided_p": 0.000999000999000999,
+      "estimate": 0.08768253439664841,
+      "haar_mean": 0.9997746456265449,
+      "observed_causal_access": 1.0874571800231934,
+      "unique_haar_subspaces": 1000
+    },
+    "response_shuffled_psych101_8b_layer_24_behavioral_vs_haar": {
+      "empirical_one_sided_p": 1.0,
+      "estimate": -0.03565916448831563,
+      "haar_mean": 0.999947935640812,
+      "observed_causal_access": 0.9642887711524963,
+      "unique_haar_subspaces": 1000
+    },
+    "response_shuffled_psych101_8b_layer_8_behavioral_vs_haar": {
+      "empirical_one_sided_p": 0.000999000999000999,
+      "estimate": 0.25008099871873857,
+      "haar_mean": 0.9997107426524162,
+      "observed_causal_access": 1.2497917413711548,
+      "unique_haar_subspaces": 1000
+    }
+  }
+}

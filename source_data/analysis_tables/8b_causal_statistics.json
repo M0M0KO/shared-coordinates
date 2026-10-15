@@ -1,0 +1,38 @@
+{
+  "contrasts_sha256": "f34e692fc6268b928df1f2e48173c117bf602983ab5da84145df3a821248cfab",
+  "null": "matched_Haar_random_subspace_then_participant_cluster_sign_permutation",
+  "permutation_nulls_sha256": "af7988ec71a997117e785add9e12e1c47cccf480918247c8b0e1644107c965f3",
+  "permutation_replicates": 10000,
+  "profile": "original",
+  "schema_version": 1,
+  "tests": {
+    "coordinate_swap": {
+      "estimate": 0.07408970899195849,
+      "one_sided_participant_permutation_p": 9.999000099990002e-05,
+      "pairs": 16000,
+      "participant_clusters": 266,
+      "task_clusters": 16
+    },
+    "projection_ablation_strength_0.25": {
+      "cells": 1024,
+      "estimate": 0.00336539156265888,
+      "one_sided_participant_permutation_p": 9.999000099990002e-05,
+      "participant_clusters": 268,
+      "task_clusters": 16
+    },
+    "projection_ablation_strength_0.50": {
+      "cells": 1024,
+      "estimate": 0.007206863558195147,
+      "one_sided_participant_permutation_p": 9.999000099990002e-05,
+      "participant_clusters": 268,
+      "task_clusters": 16
+    },
+    "projection_ablation_strength_1.00": {
+      "cells": 1024,
+      "estimate": 0.01645448399105101,
+      "one_sided_participant_permutation_p": 9.999000099990002e-05,
+      "participant_clusters": 268,
+      "task_clusters": 16
+    }
+  }
+}

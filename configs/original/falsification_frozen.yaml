@@ -1,0 +1,19 @@
+schema_version: 1
+profile: original
+frozen_before_o4_output: true
+alpha: 0.05
+shared_subspace:
+  substantially_worse_fraction_of_full_over_random_advantage: 0.20
+  aggregation: equal_weight_task_fold_cells
+private_rank:
+  approaching_shared_dimension_fraction: 0.80
+coordinate_recovery:
+  require_positive_global_procrustes_and_top1_above_chance: true
+  require_both_permutation_p_values_below_alpha: true
+external_generalization:
+  require_positive_standardized_alignment_coefficient: true
+  require_mixed_model_p_below_alpha: true
+causal_ablation:
+  strength: 1.00
+  require_positive_behavioral_minus_matched_random_contrast: true
+  require_participant_permutation_p_below_alpha: true

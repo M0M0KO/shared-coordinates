@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "verified_at_utc": "2026-08-22T00:00:00Z",
+  "policy": {
+    "stage0_download_scope": ["sro", "llama_base_8b", "minitaur_8b"],
+    "metadata_only": ["psych_101", "psych_201_discrete", "centaur_70b", "jacobian_lens"],
+    "excluded": [
+      "patient_data",
+      "clinical_data",
+      "psych_201_payload",
+      "centaur_70b_payload",
+      "ds004636_payload"
+    ]
+  },
+  "sources": {
+    "sro": {
+      "kind": "git_repository_and_data",
+      "official_url": "https://github.com/IanEisenberg/Self_Regulation_Ontology.git",
+      "revision": "4e6e837fb5aaca87ed5914fd9be251156f43eec9",
+      "default_branch": "master",
+      "license": "CC-BY-4.0",
+      "license_evidence": "README.md lines 64-66 at the pinned revision",
+      "repository_size_kib_reported_by_github": 230006,
+      "download_in_stage0": true
+    },
+    "llama_base_8b": {
+      "kind": "model",
+      "official_id": "meta-llama/Llama-3.1-8B",
+      "official_revision": "d04e592bb4f6aa9cfee91e2e20afa771667e1d4b",
+      "official_gated_state": "manual",
+      "download_provider": "modelscope",
+      "modelscope_id": "LLM-Research/Meta-Llama-3.1-8B",
+      "modelscope_revision": "39ef6178f1f193f3636d4f6150d6966dc05fa366",
+      "license": "llama3.1",
+      "selected_safetensor_bytes": 16060556376,
+      "download_in_stage0": true,
+      "identity_rule": "Every safetensor shard must match the official Hugging Face LFS SHA-256."
+    },
+    "minitaur_8b": {
+      "kind": "model",
+      "official_id": "marcelbinz/Llama-3.1-Minitaur-8B",
+      "official_revision": "7e784a8933931f4e8a6954aa0d8dae5f5b0b764d",
+      "official_gated_state": false,
+      "download_provider": "huggingface_mirror",
+      "download_endpoint": "https://hf-mirror.com",
+      "modelscope_status": "No verified repository found on 2026-08-22; no substitute model is allowed.",
+      "license": "llama3.1",
+      "selected_repository_bytes": 16069719754,
+      "download_in_stage0": true,
+      "identity_rule": "Every safetensor shard must match the official Hugging Face LFS SHA-256."
+    },
+    "psych_101": {
+      "kind": "dataset",
+      "official_id": "marcelbinz/Psych-101",
+      "revision": "611565c66395e2787cd7e3305149bb75dc138024",
+      "license": "apache-2.0",
+      "repository_bytes": 859184681,
+      "download_in_stage0": false
+    },
+    "psych_201_discrete": {
+      "kind": "dataset",
+      "official_id": "marcelbinz/Psych-201-discrete",
+      "revision": "060062064d00766ea0b5666c73268329d0f556b6",
+      "license": "apache-2.0",
+      "repository_bytes": 375378000,
+      "download_in_stage0": false
+    },
+    "centaur_70b": {
+      "kind": "model_and_code",
+      "official_adapter_id": "marcelbinz/Llama-3.1-Centaur-70B-adapter",
+      "adapter_revision": "159600db8be99dc183c289923148dfd96cbd8e07",
+      "adapter_bytes": 423479683,
+      "code_url": "https://github.com/marcelbinz/Llama-3.1-Centaur-70B.git",
+      "code_revision": "f8038fb57e052614a1d0aae3e58bf5cca93da883",
+      "license": "llama3.1_and_Apache-2.0_code",
+      "download_in_stage0": false
+    },
+    "psych_201_code": {
+      "kind": "code",
+      "official_url": "https://github.com/marcelbinz/Psych-201.git",
+      "revision": "c63dea18897393b706227b50024b27fa8d8907d8",
+      "license": "Apache-2.0",
+      "download_in_stage0": false
+    },
+    "jacobian_lens": {
+      "kind": "reference_code",
+      "official_url": "https://github.com/anthropics/jacobian-lens.git",
+      "revision": "581d398613e5602a5af361e1c34d3a92ea82ba8e",
+      "license": "Apache-2.0",
+      "status": "reference implementation; not maintained",
+      "download_in_stage0": false
+    }
+  },
+  "expected_model_files": {
+    "llama_base_8b": {
+      "model-00001-of-00004.safetensors": {
+        "bytes": 4976698672,
+        "sha256": "f8b9704ab09cdeb097aa4a0a24bca96f906eec36bad63ab495bc21475058601b"
+      },
+      "model-00002-of-00004.safetensors": {
+        "bytes": 4999802720,
+        "sha256": "c28b25e7541751056ee126627e007f8d4288319733285e9f7b17b9ff6eb313f0"
+      },
+      "model-00003-of-00004.safetensors": {
+        "bytes": 4915916176,
+        "sha256": "d8e9504dd4e4a146d484c52a97584ec14dac92237c46b064934af67a85e7d383"
+      },
+      "model-00004-of-00004.safetensors": {
+        "bytes": 1168138808,
+        "sha256": "e4486f35c040f683f7d790354f66c169c109eb9fa0954a4a35d7c458a108405d"
+      }
+    },
+    "minitaur_8b": {
+      "model-00001-of-00004.safetensors": {
+        "bytes": 4976698672,
+        "sha256": "17b59873a77007684d0f1b8101653371fef2c1089c952c56782e0deafbb1c228"
+      },
+      "model-00002-of-00004.safetensors": {
+        "bytes": 4999802720,
+        "sha256": "08e7f78bae282f743ff0b3a8c0fb19706979b5b4e6b763e52cbed24151dcc67f"
+      },
+      "model-00003-of-00004.safetensors": {
+        "bytes": 4915916176,
+        "sha256": "07edabd13a280d7d5e1a7748d000474638570176976d63ca0d895e61f47a8040"
+      },
+      "model-00004-of-00004.safetensors": {
+        "bytes": 1168138808,
+        "sha256": "43ba7900889fafba0dee08a7eb2f6e3b058b0b85d4dab1ebbcbc8c651ca6375a"
+      }
+    }
+  }
+}

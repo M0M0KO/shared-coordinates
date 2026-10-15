@@ -1,0 +1,65 @@
+# Local environments and Python caches
+.venv/
+.venv-o8/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+
+# Credentials and machine-local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Manuscripts and submission material are never part of this code release
+manuscript/
+paper/
+submissions/
+*.doc
+*.docx
+
+# Third-party data, model weights, subject-level derivatives and run outputs
+/data/
+/datasets/
+/models/
+/checkpoints/
+/cache/
+/feature_cache/
+/outputs/
+/results/
+/logs/
+/artifacts/
+reports/*
+!reports/original/
+reports/original/*
+!reports/original/task_audit_inventory.md
+manifests/private/
+preflight/
+extensions/nf4_behavioral/preflight/
+configs/original/splits.json
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+*.parquet
+!source_data/analysis_tables/*.parquet
+*.arrow
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+*.pid
+nohup.out

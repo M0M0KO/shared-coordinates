@@ -1,0 +1,38 @@
+schema_version: 1
+analysis_profile: original
+freeze_date: 2026-08-22
+
+sro_factor:
+  source_complete: data/raw/Self_Regulation_Ontology/Data/Complete_02-16-2019/taskdata_imputed.csv
+  source_retest: data/raw/Self_Regulation_Ontology/Data/Retest_02-16-2019/taskdata_imputed.csv
+  source_role: released_129_task_variable_complete_matrix
+  variable_policy: all_129_complete_T1_variables
+  components: 5
+  fitting_cohort: development_only
+  standardization: development_mean_and_standard_deviation
+  estimator: sklearn_factor_analysis
+  rotation: varimax
+  random_state: 20260821
+  confirmation_score_rule: transform_confirmation_T1_with_frozen_development_scaler_and_loadings
+  cross_time_rule: use_T1_factor_scores_unchanged_on_T2_targets
+  retest_factor_scores: not_computed_because_24_transformation_suffixes_differ_and_T2_scores_are_not_used
+
+independent_coordinate_recovery:
+  task_set_A: [memory_context, inhibitory_control, learning_decision]
+  task_set_B: [attention_interference, valuation_planning, flexibility]
+  rank_and_regularization: reuse_frozen_private_selection
+  alignment: orthogonal_procrustes
+  alignment_fit_cohort: development_only
+  confirmation_metrics: [procrustes_correlation, canonical_correlation, top1_retrieval]
+  identity_permutations: 10000
+
+persona:
+  source_complete: data/raw/Self_Regulation_Ontology/Data/Complete_02-16-2019/meaningful_variables.csv
+  included_columns: name_contains_survey_dot
+  aggregation: development_zscore_then_mean_within_survey_instrument
+  missingness: omit_unavailable_instrument
+  rounding_decimals: 2
+  fixed_template: "Participant questionnaire profile (standardized scores): {scores}."
+  placement: prepend_before_task_session
+  target_trials: same_T2_family_B_primary_trials_as_manifold_comparison
+  model: minitaur_8b

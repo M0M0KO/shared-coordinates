@@ -1,0 +1,223 @@
+{
+  "captured_at_utc": "2026-08-22T11:27:03.047196+00:00",
+  "files": [
+    {
+      "bytes": 1519,
+      "path": ".gitattributes"
+    },
+    {
+      "bytes": 7627,
+      "path": "LICENSE"
+    },
+    {
+      "bytes": 40861,
+      "path": "README.md"
+    },
+    {
+      "bytes": 4691,
+      "path": "USE_POLICY.md"
+    },
+    {
+      "bytes": 826,
+      "path": "config.json"
+    },
+    {
+      "bytes": 73,
+      "path": "configuration.json"
+    },
+    {
+      "bytes": 185,
+      "path": "generation_config.json"
+    },
+    {
+      "bytes": 4584408808,
+      "path": "model-00001-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664167376,
+      "path": "model-00002-of-00030.safetensors"
+    },
+    {
+      "bytes": 4999711704,
+      "path": "model-00003-of-00030.safetensors"
+    },
+    {
+      "bytes": 4966157032,
+      "path": "model-00004-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664134408,
+      "path": "model-00005-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664167408,
+      "path": "model-00006-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664167408,
+      "path": "model-00007-of-00030.safetensors"
+    },
+    {
+      "bytes": 4999711728,
+      "path": "model-00008-of-00030.safetensors"
+    },
+    {
+      "bytes": 4966157056,
+      "path": "model-00009-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664134408,
+      "path": "model-00010-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664167408,
+      "path": "model-00011-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664167408,
+      "path": "model-00012-of-00030.safetensors"
+    },
+    {
+      "bytes": 4999711728,
+      "path": "model-00013-of-00030.safetensors"
+    },
+    {
+      "bytes": 4966157056,
+      "path": "model-00014-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664134408,
+      "path": "model-00015-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664167408,
+      "path": "model-00016-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664167408,
+      "path": "model-00017-of-00030.safetensors"
+    },
+    {
+      "bytes": 4999711728,
+      "path": "model-00018-of-00030.safetensors"
+    },
+    {
+      "bytes": 4966157056,
+      "path": "model-00019-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664134408,
+      "path": "model-00020-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664167408,
+      "path": "model-00021-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664167408,
+      "path": "model-00022-of-00030.safetensors"
+    },
+    {
+      "bytes": 4999711728,
+      "path": "model-00023-of-00030.safetensors"
+    },
+    {
+      "bytes": 4966157056,
+      "path": "model-00024-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664134408,
+      "path": "model-00025-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664167408,
+      "path": "model-00026-of-00030.safetensors"
+    },
+    {
+      "bytes": 4664167408,
+      "path": "model-00027-of-00030.safetensors"
+    },
+    {
+      "bytes": 4999711728,
+      "path": "model-00028-of-00030.safetensors"
+    },
+    {
+      "bytes": 4966173536,
+      "path": "model-00029-of-00030.safetensors"
+    },
+    {
+      "bytes": 2101346432,
+      "path": "model-00030-of-00030.safetensors"
+    },
+    {
+      "bytes": 59615,
+      "path": "model.safetensors.index.json"
+    },
+    {
+      "bytes": 0,
+      "path": "original"
+    },
+    {
+      "bytes": 17640971024,
+      "path": "original/consolidated.00.pth"
+    },
+    {
+      "bytes": 17640971024,
+      "path": "original/consolidated.01.pth"
+    },
+    {
+      "bytes": 17640971024,
+      "path": "original/consolidated.02.pth"
+    },
+    {
+      "bytes": 17640971024,
+      "path": "original/consolidated.03.pth"
+    },
+    {
+      "bytes": 17640971024,
+      "path": "original/consolidated.04.pth"
+    },
+    {
+      "bytes": 17640971024,
+      "path": "original/consolidated.05.pth"
+    },
+    {
+      "bytes": 17640971024,
+      "path": "original/consolidated.06.pth"
+    },
+    {
+      "bytes": 17640971024,
+      "path": "original/consolidated.07.pth"
+    },
+    {
+      "bytes": 199,
+      "path": "original/params.json"
+    },
+    {
+      "bytes": 2183982,
+      "path": "original/tokenizer.model"
+    },
+    {
+      "bytes": 301,
+      "path": "special_tokens_map.json"
+    },
+    {
+      "bytes": 9085658,
+      "path": "tokenizer.json"
+    },
+    {
+      "bytes": 50500,
+      "path": "tokenizer_config.json"
+    }
+  ],
+  "integrity_boundary": "The public API exposes file sizes but not immutable per-file digests. Promotion therefore checks these frozen sizes, local SHA-256 values, the 30-shard index and successful exact-BF16 model loading.",
+  "model_id": "LLM-Research/Meta-Llama-3.1-70B",
+  "profile": "original",
+  "provider": "ModelScope",
+  "provider_created_at": "2024-07-23T17:18:15+00:00",
+  "provider_file_count": 52,
+  "provider_total_bytes": 282246702101,
+  "provider_updated_at": "2025-02-26T08:34:58+00:00",
+  "requested_revision": "master",
+  "schema_version": 1
+}
